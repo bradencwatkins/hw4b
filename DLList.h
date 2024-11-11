@@ -45,11 +45,22 @@ public:
     }
 
     void push_front(T item) {
-
+        Node* n = new Node(item);
+        if (head == nullptr) {
+            head = n;
+            tail = n;
+        }
+        else {
+            n->next = head;
+            head->prev = n;
+            head = n;
+        }
     }
 
     void insert(T item, int position) {
-
+        for (int i = 0; i < position; i++) {
+            
+        }
     }
 
     void pop_front() {
