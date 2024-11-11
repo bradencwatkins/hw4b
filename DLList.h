@@ -1,8 +1,7 @@
 
 #ifndef DLLIST_H
 #define DLLIST_H
-
-#endif //DLLIST_H
+#endif
 
 #include <iostream>
 using namespace std;
@@ -12,10 +11,10 @@ class DLList {
 public:
     struct Node {
         Node* prev;
-        Node next;
+        Node* next;
         T value;
 
-        Node(T val) : next(nullptr), prev(nullptr), value(val) {}
+        Node(T val) : prev(nullptr), next(nullptr), value(val) {}
     };
 
     DLList() {
@@ -32,11 +31,20 @@ public:
         return head;
     }
 
-    void push_front(T item) {
-        
+    void push_back(T item) {
+        Node* n = new Node(item);
+        if (head == nullptr) {
+            head = n;
+            tail = n;
+        }
+        else {
+            tail->next = n;
+            n->prev = tail;
+            tail = n;
+        }
     }
 
-    void push_back(T item) {
+    void push_front(T item) {
 
     }
 
